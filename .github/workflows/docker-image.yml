@@ -9,7 +9,7 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout the code (REQUIRED to find Dockerfile)
+      # 1. Checkout the code
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -30,4 +30,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ vars.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
+          # FIX: I changed the dynamic name to the hardcoded lowercase name
+          tags: ${{ vars.DOCKER_USERNAME }}/api-docker:latest
